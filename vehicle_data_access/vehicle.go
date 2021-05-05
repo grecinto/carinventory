@@ -1,5 +1,7 @@
 package vehicle_data_access
 
+// NOTE: enumerated values/constant are just for convenience, helper values.
+
 // MakeType enumerated strings
 type MakeType string
 const(
@@ -42,17 +44,17 @@ const(
 
 // Vehicle structure
 type Vehicle struct {
-	VIN string 				`validate:"required"`
+	VIN string 				`validate:"required" json:"VIN,omitempty"`
 
-	Make MakeType 			`validate:"required"`
-	Model ModelType 		`validate:"required"`
-	Color ColorType 		`validate:"required"`
+	Make string 			`validate:"required" json:"Make,omitempty"`
+	Model string 			`validate:"required" json:"Model,omitempty"`
+	Color string 			`validate:"required" json:"Color,omitempty"`
 
-	BuyPrice float32 		`validate:"required"`
-	MSRP float32 			`validate:"required"`
+	BuyPrice float32 		`validate:"required" json:"BuyPrice,omitempty"`
+	MSRP float32 			`validate:"required" json:"MSRP,omitempty"`
 
-	DoorCount DoorCountType
-	TrimLevel TrimLevelType
+	DoorCount int			`json:"DoorCount,omitempty"`
+	TrimLevel string		`json:"TrimLevel,omitempty"`
 }
 
 // Returns true if Vehicle struct is empty or considered uninitialized

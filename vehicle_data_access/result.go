@@ -3,14 +3,14 @@ package vehicle_data_access
 // Result of the CRUD operation on the item.
 type Result struct {
 	ItemIndex int
-	Error string
+	Error string		`json:"Error,omitempty"`
 }
 
 // GetResult is a Result with data retrieved from backend DB
 type GetResult struct {
 	ItemIndex int
-	Error string
-	Vehicle Vehicle
+	Error string		`json:"Error,omitempty"`
+	Vehicle Vehicle		`json:"Vehicle,omitempty"`
 }
 
 // IsSuccessful returns true if success, false otherwise

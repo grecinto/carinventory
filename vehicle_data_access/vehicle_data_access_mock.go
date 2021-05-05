@@ -34,8 +34,11 @@ func (ma mockAccess)Get(vins ...string) []GetResult{
 	var results []GetResult
 	for i,vin := range vins {
 		v := ma.cache[vin]
-		r := GetResult{
-			Vehicle: v,
+		r := GetResult{}
+		if v.IsEmpty() {
+			r.Error = fmt.Sprintf("Didn't find item with VIN '%s'", vin)
+		} else {
+			r.Vehicle = v
 		}
 		r.ItemIndex = i
 		results = append(results, r)
